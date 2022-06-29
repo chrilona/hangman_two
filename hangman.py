@@ -11,9 +11,12 @@ def get_words(words):
 def play_hangman():
     word=get_words(words)
     word_letters=set(word)
-    # alphabet=set(string.ascii_uppercase)
+    alphabet=set(string.ascii_uppercase)
     used_letters=set()
     lives=6
+
+    user_input=input("Guess a letter: ")
+    print(user_input)
     
     while len(word_letters)>0 and lives>0 :
 
@@ -22,7 +25,7 @@ def play_hangman():
         print("Current word: "," ".join(word_list))
 
         user_letter = input("Guess a letter: ").upper()
-        if user_letter in used_letters:
+        if user_letter in alphabet - used_letters:
             used_letters.add(user_letter)
             if user_letter in word_letters:
                 word_letters.remove(user_letter)
@@ -37,10 +40,11 @@ def play_hangman():
         else:
             print("Invalid character.TRY again")
 
-        if lives==0:
-         print("Sorry you died.The word was" ,word)
-        else:
-         print("Your guess was correct" ,word, "!! Congratulations" )      
+    if lives==0:
+       print("Sorry you died.The word was" ,word)
+    else:
+     print("Your guess was correct" ,word, "!! Congratulations" )      
 
 
-user_input=input("Guess a letter: ")
+
+
